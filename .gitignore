@@ -1,0 +1,19 @@
+# macOS system files
+.DS_Store
+
+# Node / Python / C++ / etc. artifacts
+*.log
+*.exe
+*.out
+*.pyc
+__pycache__/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.suo
+*.user
+*.vcxproj.*
+
+# Git folders
+.git/
