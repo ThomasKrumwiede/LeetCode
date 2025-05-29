@@ -1,0 +1,9 @@
+# Ignore everything
+*
+
+# But don't ignore folders (so .cpp/.txt inside folders can be tracked)
+!*/
+
+# Allow all .cpp and .txt files
+!*.cpp
+!*.txt
