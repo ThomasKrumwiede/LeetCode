@@ -20,6 +20,16 @@ class Solution {
                 current = s[i];
                 next = s[i+1];
 
+                //Case 1: subtraction is needed
+                if (testSubtraction(current, next)){
+                    total += (charToInt(next) - charToInt(current));
+                    i++;
+                }
+                //Case 2: no subtraction needed 
+                else{
+                    total += charToInt(current); 
+                }
+                
                 
                 cout << "Current " << current;
                 cout << "Next " << next;
@@ -36,6 +46,17 @@ class Solution {
             if (c == 'C') return 100;
             if (c == 'D') return 500;
             if (c == 'M') return 1000;
+        }
+
+        //test if subtraction is needed
+        bool testSubtraction(char current, char next){
+            //Conditions where subtraction is required 
+            if (current == 'I' && (next == 'V' || next == 'X')) return true;
+            if (current == 'X' && (next == 'L' || next == 'C')) return true;
+            if (current == 'C' && (next == 'D' || next == 'M')) return true;
+
+            //if non are true there is no subtraction needed 
+            return false;
         }
     };
 
