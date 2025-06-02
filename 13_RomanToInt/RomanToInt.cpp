@@ -7,45 +7,56 @@ using namespace std;
 //Calls to contain the romanToInt method 
 class Solution {
     public:
-        int romanToInt(string s) {
-            int total = 0;  //Hold the total integer value 
-            char current;   //Hold the current letter
-            char next;      //Hold the next letter
 
-            //For only a single roman numeral 
-            if (s.length() == 1) return charToInt(s[0]); 
-
-            //loop throuhg the entier string 
-            for(int i = 0; i + 1 < s.length(); i++){
-                current = s[i];
-                next = s[i+1];
-
-                //Case 1: subtraction is needed
-                if (testSubtraction(current, next)){
-                    total += (charToInt(next) - charToInt(current));
+        //function to turn a roman numeral to an int 
+        int romanToInt(string s){
+            int total = 0;
+        
+            //Loop through the entire stirn 
+            for (int i = 0; i < s.length(); i++){
+                //Case 1: subtraction in required 
+                if (i + 1 < s.length() && testSubtraction(s[i], s[i + 1])){
+                    total += charToInt(s[i + 1]) - charToInt(s[i]);
                     i++;
-                }
-                //Case 2: no subtraction needed 
+                } 
+                //Case 2: only addition is needed 
                 else{
-                    total += charToInt(current); 
+                    total += charToInt(s[i]);
                 }
-                
-                
-                cout << "Current " << current;
-                cout << "Next " << next;
             }
+    
             return total;
         }
 
         //Method to convet a roman numeral to an interger
         int charToInt(char c){
-            if (c == 'I') return 1;
-            if (c == 'V') return 5;
-            if (c == 'X') return 10;
-            if (c == 'L') return 50;
-            if (c == 'C') return 100;
-            if (c == 'D') return 500;
-            if (c == 'M') return 1000;
+            int value = 0;
+
+            switch(c){
+                case 'I':
+                    value = 1;
+                    break;
+                case 'V':
+                    value = 5;
+                    break;
+                case 'X':
+                    value = 10;
+                    break;
+                case 'L':
+                    value = 50;
+                    break;
+                case 'C':
+                    value = 100;
+                    break;
+                case 'D':
+                    value = 500;
+                    break;
+                case 'M':
+                    value = 1000;
+                    break;
+            }
+            
+            return value;
         }
 
         //test if subtraction is needed
@@ -64,7 +75,8 @@ class Solution {
 //Main function to test 
 int main(){
     Solution test;
-    test.romanToInt("IV");
+    cout << "test IV: " << test.romanToInt("IV") << endl;
+    cout << "test XVI: " << test.romanToInt("XVI") << endl;
 
     return 0;
 }
