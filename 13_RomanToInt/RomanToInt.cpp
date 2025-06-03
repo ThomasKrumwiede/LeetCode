@@ -1,6 +1,7 @@
 //Clonvert roman numerals to integers 
 #include <iostream>
 #include <string>
+#include <stdexcept>
 
 using namespace std;
 
@@ -10,6 +11,8 @@ class Solution {
 
         //function to turn a roman numeral to an int 
         int romanToInt(string s){
+            if (!(s.length() >= 1 && s.length() <= 15)) throw runtime_error("Numeral is not a compatible size");
+
             int total = 0;
         
             //Loop through the entire stirn 
