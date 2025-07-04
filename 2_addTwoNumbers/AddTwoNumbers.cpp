@@ -14,9 +14,17 @@ using namespace std;
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
-        ListNode* answer;
+        ListNode* head;
+        ListNode* node;
         int product;
         int carry = 0;
+
+        if (listLength(l1) == listLength(l2)){
+            for (int i = 0; i < listLength(l1); i++){
+
+            }
+        }
+
 
         while (l1->next != nullptr && l2->next != nullptr) {
             product = l1->val + l2->val + carry;
@@ -26,8 +34,31 @@ public:
             }
         }
 
+        return head;
     }
 private:
+    ListNode* getNextNode(ListNode* list){
+        ListNode* nextNode;
+        nextNode = list->next;
+        return nextNode;
+    }
+    //funciton to calculate the sum (will returnt the full sum and carry will be
+    //taken care of in the addTwoNumbers fucntio)
+    int sumOfTwoNodes (ListNode* l1, ListNode* l2){
+        int listSum = 0;
+        listSum = l1->val + l2->val;
+
+        return listSum;
+    }
+
+    int calculateCarry (int sum){
+        int carry;
+         
+        carry = (sum % 10) + 1; //Calculate the carry in the event there is one 
+
+        return carry;
+    }
+    
     //fucntion to calculate the length of a linked list
     int listLength(ListNode* lst) {
         int length = 0;
